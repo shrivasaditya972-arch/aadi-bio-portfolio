@@ -96,7 +96,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Wave Animation for Emoji */
         .wave-emoji {
             display: inline-block;
             margin-left: 5px;
@@ -161,7 +160,6 @@
             font-weight: 600;
         }
 
-        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -188,7 +186,6 @@
             transform: translateY(-3px);
         }
 
-        /* Learning Status Banner */
         .status-banner {
             background: rgba(99, 102, 241, 0.1);
             border: 1px dashed rgba(99, 102, 241, 0.4);
@@ -202,7 +199,6 @@
             gap: 10px;
         }
 
-        /* Projects Section */
         .projects-grid {
             display: flex;
             flex-direction: column;
@@ -258,7 +254,6 @@
             text-decoration: underline;
         }
 
-        /* Connect & Services Section */
         .service-promo {
             text-align: center;
             color: #cbd5e1;
@@ -316,19 +311,10 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-            .main-container {
-                padding: 25px;
-                border-radius: 20px;
-            }
-            .header-section h1 {
-                font-size: 2.2rem;
-            }
-            .skills-grid, .connect-grid {
-                grid-template-columns: 1fr;
-            }
+            body { padding: 15px; }
+            .main-container { padding: 25px; border-radius: 20px; }
+            .header-section h1 { font-size: 2.2rem; }
+            .skills-grid, .connect-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -340,9 +326,7 @@
             <div class="profile-badge">✨ Welcome to my Portfolio ✨</div>
             <h1>Hi, I'm <span class="name-highlight">Aditya Shrivas</span> <span class="wave-emoji">👋</span></h1>
             <p>🚀 Web Developer & 🤖 AI-Assisted Tech Creator</p>
-            <div class="location-tag">
-                📍 Bhind, Madhya Pradesh, India
-            </div>
+            <div class="location-tag">📍 Bhind, Madhya Pradesh, India</div>
         </div>
 
         <!-- About Section -->
@@ -376,7 +360,7 @@
         <div class="content-block">
             <h2>💼 Featured Projects</h2>
             <div class="projects-grid">
-                <!-- Project 1 (Gym Project with Local Link) -->
+                <!-- Project 1 (Gym Project Linked via Local Path) -->
                 <div class="project-card">
                     <div class="project-title">🏋️‍♂️ Ironclad Athletics Gym</div>
                     <div class="project-desc">
