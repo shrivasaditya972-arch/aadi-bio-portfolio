@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI मूड और पावरफुल कोट्स</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #090d16, #1a102f);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        h2 {
+            color: #f43f5e;
+            margin-bottom: 8px;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        p.subtitle {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        .mood-selector {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #f8fafc;
+            padding: 14px;
+            border-radius: 14px;
+            font-size: 14px;
+            outline: none;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .mood-selector:focus {
+            border-color: #f43f5e;
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #f43f5e, #9333ea);
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 14px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+        }
+
+        .generate-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 63, 94, 0.6);
+        }
+
+        .quote-box {
+            background: #1e293b;
+            border-left: 4px solid #f43f5e;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid #334155;
+            border-right: 1px solid #334155;
+            border-bottom: 1px solid #334155;
+        }
+
+        .quote-box h4 {
+            font-size: 11px;
+            color: #fb7185;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .quote-box p {
+            font-size: 15px;
+            color: #f1f5f9;
+            line-height: 1.6;
+            font-style: italic;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>🔥 AI वाईब्स एंड कोट्स</h2>
+        <p class="subtitle">अपनी आज की भावना चुनें और धमाकेदार लाइनें पाएं!</p>
+
+        <!-- New Updated Mood Dropdown -->
+        <select class="mood-selector" id="moodSelect">
+            <option value="hardcore">⚡ हार्डकोर मोटिवेशन (Aag Lgane Wala)</option>
+            <option value="gym">💪 जिम और बल्किंग जोश (Gym & Bulking)</option>
+            <option value="attitude">😎 स्वैग और एटीट्यूड (Attitude & Swag)</option>
+            <option value="deep">🥀 अकेलापन और गहराई (Deep & Heartbreak)</option>
+            <option value="success">👑 अमीर और सक्सेस माइंडसेट (Success Mindset)</option>
+            <option value="happy">✨ चिल और पॉजिटिव मूड (Happy & Chill)</option>
+        </select>
+
+        <button class="generate-btn" id="getQuoteBtn">नया विचार देखें ✨</button>
+
+        <!-- Quote Display Box -->
+        <div class="quote-box" id="quoteBox">
+            <h4 id="quoteCategory">हार्डकोर मोटिवेशन</h4>
+            <p id="quoteText">"किस्मत के भरोसे बैठोगे तो उतना ही मिलेगा, जितना मेहनत करने वाले छोड़ देते हैं!"</p>
+        </div>
+    </div>
+
+    <script>
+        // Hat ke aur damdaar quotes ki database
+        const quotesData = {
+            hardcore: {
+                title: "⚡ हार्डकोर मोटिवेशन",
+                quotes: [
+                    "किस्मत के भरोसे बैठोगे तो उतना ही मिलेगा, जितना मेहनत करने वाले छोड़ देते हैं!",
+                    "वक्त अगर बुरा है तो मेहनत इतनी करो कि वक्त को भी बदलना पड़ जाए।",
+                    "सफलता रातों-रात नहीं मिलती, उसके पीछे सालों की खामोश मेहनत होती है।",
+                    "अगर लोग आपकी पीठ पीछे बातें करते हैं, तो समझ लो कि आप उनसे दो कदम आगे चल रहे हो!"
+                ]
+            },
+            gym: {
+                title: "💪 जिम और बल्किंग जोश",
+                quotes: [
+                    "शरीर दर्द से बनता है, बहाने बनाने से नहीं! आज का वर्कआउट मिस मत करना।",
+                    "लोहा उठाने से कतराओगे, तो जिंदगी में वजन कैसे उठा पाओगे?",
+                    "डाइट साफ, नीयत साफ और इरादा मजबूत... फिर देखना बॉडी कैसे बनती है!",
+                    "थक गया हूँ तो क्या हुआ, रुकना मेरा काम नहीं है!"
+                ]
+            },
+            attitude: {
+                title: "😎 स्वैग और एटीट्यूड",
+                quotes: [
+                    "हम अपनी पहचान खुद बनाते हैं, किसी की परछाई बनकर जीना हमारी फितरत नहीं।",
+                    "अंदाज़ कुछ अलग रखते हैं, तभी तो लोग हमें देखकर जलते हैं।",
+                    "शेर जब शांत बैठे, तो उसे कमज़ोर समझने की भूल मत करना!",
+                    "दूसरों की नज़रों में खुद को साबित करने से बेहतर है, खुद की नज़रों में उठो।"
+                ]
+            },
+            deep: {
+                title: "🥀 अकेलापन और गहराई",
+                quotes: [
+                    "अक्सर अकेले रास्ते ही आपको आपकी असली ताकत से मिलवाते हैं।",
+                    "भीड़ में चलना आसान होता है, लेकिन अकेले चलने वाले इतिहास रचते हैं।",
+                    "दर्द इंसान को तोड़ता नहीं है, बल्कि अंदर से फौलाद बना देता है।",
+                    "जो अपना था ही नहीं, उसके जाने का गम कैसा?"
+                ]
+            },
+            success: {
+                title: "👑 सक्सेस माइंडसेट",
+                quotes: [
+                    "सोच बड़ी रखो, रास्ते अपने आप बनते चले जाएंगे।",
+                    "पैसे के पीछे भागोगे तो थक जाओगे, काबिल बनो पैसा तुम्हारे पीछे भागेगा।",
+                    "सफल लोग काम अलग तरीके से नहीं करते, वे हर काम को अलग शिद्दत से करते हैं।",
+                    "जो रिस्क लेना नहीं जानते, वे जिंदगीभर दूसरों के अंडर काम करते हैं।"
+                ]
+            },
+            happy: {
+                title: "✨ चिल और पॉजिटिव मूड",
+                quotes: [
+                    "मुस्कुराना सबसे बड़ी ताकत है, दुनिया की हर मुश्किल इसके आगे छोटी है!",
+                    "आज का दिन बहुत खूबसूरत है, इसे फालतू की टेंशन में बर्बाद मत करो।",
+                    "खुश रहना ही सबसे बड़ा रिवेंज है उन लोगों के लिए जो तुम्हें उदाس देखना चाहते हैं।"
+                ]
+            }
+        };
+
+        const moodSelect = document.getElementById('moodSelect');
+        const getQuoteBtn = document.getElementById('getQuoteBtn');
+        const quoteText = document.getElementById('quoteText');
+        const quoteCategory = document.getElementById('quoteCategory');
+
+        getQuoteBtn.addEventListener('click', () => {
+            const selectedKey = moodSelect.value;
+            const categoryData = quotesData[selectedKey];
+            
+            // Category ka naam update karna
+            quoteCategory.innerText = categoryData.title;
+
+            // Random quote select karna
+            const quotesArray = categoryData.quotes;
+            const randomIndex = Math.floor(Math.random() * quotesArray.length);
+            
+            // Thoda smooth fade effect dene ke liye opacity 0 karke wapas lana
+            quoteText.style.opacity = '0';
+            setTimeout(() => {
+                quoteText.innerText = `"${quotesArray[randomIndex]}"`;
+                quoteText.style.opacity = '1';
+            }, 150);
+        });
+    </script>
+</body>
+</html>

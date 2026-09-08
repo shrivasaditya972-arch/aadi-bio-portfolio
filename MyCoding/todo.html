@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मेरी टू-डू लिस्ट (To-Do List App)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: #111827;
+            border-radius: 24px;
+            border: 1px solid #1f2937;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            padding: 25px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            font-size: 22px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Input Box Area */
+        .input-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            background: #1f2937;
+            border: 1px solid #374151;
+            padding: 12px 15px;
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+        }
+
+        button.add-btn {
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            border: none;
+            padding: 0 18px;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button.add-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        /* Task List Area */
+        ul.task-list {
+            list-style: none;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* Scrollbar Styling */
+        ul.task-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        ul.task-list::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 10px;
+        }
+
+        li.task-item {
+            background: #1f2937;
+            border: 1px solid #374151;
+            padding: 12px 15px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            transition: 0.2s;
+        }
+
+        li.task-item:hover {
+            border-color: #4b5563;
+        }
+
+        .task-text {
+            font-size: 14px;
+            color: #f3f4f6;
+            cursor: pointer;
+            word-break: break-all;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        /* Completed Task Style */
+        li.task-item.completed .task-text {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+            border: none;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+
+        .empty-msg {
+            text-align: center;
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>📝 मेरी टू-डू लिस्ट</h2>
+
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="नया काम यहाँ लिखें...">
+            <button class="add-btn" id="addTaskBtn">जोड़ें</button>
+        </div>
+
+        <ul class="task-list" id="taskList">
+            </ul>
+        <p class="empty-msg" id="emptyMsg">कोई टास्क नहीं बचा है!</p>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const taskList = document.getElementById('taskList');
+        const emptyMsg = document.getElementById('emptyMsg');
+
+        // फंक्शन: चेक करें कि लिस्ट खाली है या नहीं
+        function checkEmpty() {
+            if (taskList.children.length === 0) {
+                emptyMsg.style.display = 'block';
+            } else {
+                emptyMsg.style.display = 'none';
+            }
+        }
+
+        // टास्क जोड़ने का मुख्य फंक्शन
+        function addTask() {
+            const taskTextVal = taskInput.value.trim();
+            
+            if (taskTextVal === '') {
+                alert('कृपया पहले कुछ लिखें!');
+                return;
+            }
+
+            // नया <li> एलिमेंट बनाना
+            const li = document.createElement('li');
+            li.className = 'task-item';
+
+            // टास्क का टेक्स्ट
+            const span = document.createElement('span');
+            span.className = 'task-text';
+            span.innerText = taskTextVal;
+
+            // टेक्स्ट पर क्लिक करने से काम पूरा (Completed) हो जाएगा
+            span.addEventListener('click', () => {
+                li.classList.toggle('completed');
+            });
+
+            // डिलीट बटन बनाना
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerText = 'हटाएं';
+
+            // डिलीट बटन पर क्लिक करने से टास्क डिलीट हो जाएगा
+            deleteBtn.addEventListener('click', () => {
+                li.remove();
+                checkEmpty();
+            });
+
+            // सबको एक साथ जोड़ना
+            li.appendChild(span);
+            li.appendChild(deleteBtn);
+            taskList.appendChild(li);
+
+            // इनपुट बॉक्स को साफ़ करना
+            taskInput.value = '';
+            checkEmpty();
+        }
+
+        // बटन क्लिक करने पर
+        addTaskBtn.addEventListener('click', addTask);
+
+        // कीबोर्ड का 'Enter' बटन दबाने पर भी टास्क जुड़ जाए
+        taskInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // शुरुआत में चेक करना
+        checkEmpty();
+    </script>
+</body>
+</html>

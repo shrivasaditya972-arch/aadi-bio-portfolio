@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Shrivas | Full-Stack & AI Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(17, 24, 39, 0.75);
+            --border-color: rgba(99, 102, 241, 0.25);
+            --primary-glow: #6366f1;
+            --accent-cyan: #38bdf8;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #38bdf8, #6366f1, #c084fc);
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-cyan);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .header-section h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-section h1 span.name-highlight {
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Wave Animation for Emoji */
+        .wave-emoji {
+            display: inline-block;
+            margin-left: 5px;
+            animation: wave 1.5s infinite;
+            transform-origin: 70% 70%;
+            -webkit-text-fill-color: initial; /* Ensures emoji retains its natural colors */
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            20% { transform: rotate(14deg); }
+            40% { transform: rotate(-8deg); }
+            60% { transform: rotate(14deg); }
+            80% { transform: rotate(-4deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .header-section p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .location-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin: 0 auto;
+        }
+
+        .content-block {
+            margin-bottom: 35px;
+        }
+
+        .content-block h2 {
+            font-size: 1.35rem;
+            color: var(--accent-cyan);
+            margin-bottom: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-text {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .about-text strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 16px 20px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateY(-3px);
+        }
+
+        /* Learning Status Banner */
+        .status-banner {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px dashed rgba(99, 102, 241, 0.4);
+            padding: 14px 20px;
+            border-radius: 12px;
+            color: #a5b4fc;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 18px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 5px;
+            width: fit-content;
+        }
+
+        .project-link.gold {
+            color: #fbbf24;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Connect & Services Section */
+        .service-promo {
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-promo strong {
+            color: var(--accent-cyan);
+        }
+
+        .connect-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .connect-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            color: #ffffff;
+        }
+
+        .whatsapp-btn:hover {
+            background: #22bf5b;
+            transform: translateY(-2px);
+        }
+
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: #ffffff;
+        }
+
+        .insta-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .main-container {
+                padding: 25px;
+                border-radius: 20px;
+            }
+            .header-section h1 {
+                font-size: 2.2rem;
+            }
+            .skills-grid, .connect-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Hero Section -->
+        <div class="header-section">
+            <div class="profile-badge">✨ Welcome to my Portfolio ✨</div>
+            <h1>Hi, I'm <span class="name-highlight">Aditya Shrivas</span> <span class="wave-emoji">👋</span></h1>
+            <p>🚀 Web Developer & 🤖 AI-Assisted Tech Creator</p>
+            <div class="location-tag">
+                📍 Bhind, Madhya Pradesh, India
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="content-block">
+            <h2>👨‍💻 About Me</h2>
+            <p class="about-text">
+                Hello everyone! My name is <strong>Aditya Shrivas</strong>. I am currently pursuing my higher education with a <strong>B.Sc. in Biology</strong>, while actively exploring my deep passion for technology, coding, and digital creation.
+            </p>
+            <p class="about-text">
+                Along with my science studies, I have successfully completed my <strong>CCA</strong> and am currently pursuing my <strong>DCA</strong> to build solid fundamentals in computer applications.
+            </p>
+            <div class="status-banner">
+                🎯 <strong>Current Status:</strong> Main abhi coding seekh raha hoon aur daily practice karke apni web development skills ko advance kar raha hoon!
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="content-block">
+            <h2>🛠️ Technical Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">💻 HTML5 & CSS3 Architecture</div>
+                <div class="skill-card">⚡ JavaScript Fundamentals</div>
+                <div class="skill-card">🐍 Python Basics & Programming</div>
+                <div class="skill-card">🎓 CCA & DCA (Computer Applications)</div>
+                <div class="skill-card">🤖 AI-Assisted Development & Prompting</div>
+                <div class="skill-card">📱 Responsive UI/UX Layouts</div>
+            </div>
+        </div>
+
+        <!-- Featured Projects Section -->
+        <div class="content-block">
+            <h2>💼 Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-title">🏋️‍♂️ Ironclad Gym Bhopal</div>
+                    <div class="project-desc">
+                        My first official responsive live portfolio/business website built with modern HTML & CSS design principles.
+                    </div>
+                    <a href="https://ironclad-gym-bhopal.netlify.app" target="_blank" class="project-link">
+                        Visit Live Website ↗
+                    </a>
+                </div>
+
+                <!-- Project 2 (The Royal Bean Cafe) -->
+                <div class="project-card">
+                    <div class="project-title">☕ The Royal Bean Cafe</div>
+                    <div class="project-desc">
+                        A premium, responsive dark and gold-themed cafe & lounge website featuring rich UI, interactive menus, and WhatsApp booking integration.
+                    </div>
+                    <a href="https://royal-bean-cafe.vercel.app" target="_blank" class="project-link gold">
+                        Visit Live Website ↗
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connect & Services Section -->
+        <div class="content-block" style="margin-bottom: 0;">
+            <h2>🤝 Let's Connect</h2>
+            <div class="service-promo">
+                💡 <strong>Aisi hi stunning aur professional website banvane ke liye mujhse contact karein</strong> - budget-friendly price mein behtareen design ke sath!
+            </div>
+            <div class="connect-grid">
+                <a href="https://wa.me/919243266485?text=Hi%20Aditya,%20I%20want%20to%20get%20a%20website%20made%20like%20your%20portfolio." class="connect-btn whatsapp-btn" target="_blank">
+                    💬 Chat on WhatsApp
+                </a>
+                <a href="https://www.instagram.com/mr_aadi_singh_.002/" class="connect-btn insta-btn" target="_blank">
+                    📸 Instagram Profile
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
