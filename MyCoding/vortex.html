@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortex AI | Smart SaaS Platform</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #090d16;
+            color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+        }
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+            border-bottom: 1px solid #1f2937;
+            padding-bottom: 12px;
+        }
+        .logo {
+            font-size: 17px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+        .logo span {
+            color: #a855f7;
+        }
+        .live-badge {
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        .hero h1 span {
+            background: linear-gradient(90deg, #c084fc, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 13px;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+        /* Interactive Box / Feature Preview */
+        .interactive-box {
+            background: #1f2937;
+            border: 1px solid #374151;
+            padding: 16px;
+            border-radius: 18px;
+            margin-bottom: 20px;
+        }
+        .box-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #d1d5db;
+            margin-bottom: 8px;
+        }
+        /* Real Working Input Field */
+        .real-input {
+            width: 100%;
+            background: #111827;
+            border: 1px solid #4b5563;
+            padding: 11px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            outline: none;
+        }
+        .real-input:focus {
+            border-color: #a855f7;
+        }
+        .generate-btn {
+            background: linear-gradient(90deg, #9333ea, #db2777);
+            color: #ffffff;
+            width: 100%;
+            padding: 11px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .generate-btn:hover {
+            opacity: 0.9;
+        }
+        /* Output Box */
+        .output-box {
+            margin-top: 12px;
+            background: #0b0f19;
+            border: 1px solid #2d3748;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #34d399;
+            display: none;
+            line-height: 1.4;
+        }
+        /* Pricing / Plans Section */
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 20px 0 10px 0;
+        }
+        .pricing-card {
+            background: #1a2234;
+            border: 1px solid #2d3748;
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .plan-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+        .plan-desc {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+        .plan-price {
+            text-align: right;
+        }
+        .amount {
+            font-size: 15px;
+            font-weight: 800;
+            color: #a855f7;
+        }
+        /* CTA Button */
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            border-radius: 14px;
+            text-align: center;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 18px;
+            font-size: 14px;
+            background: #a855f7;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+            border: none;
+        }
+        .cta-btn:hover {
+            opacity: 0.9;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 20px;
+            border-top: 1px solid #1f2937;
+            padding-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Top Navigation -->
+        <div class="top-nav">
+            <div class="logo">🔮 VORTEX <span>AI</span></div>
+            <div class="live-badge">SaaS v1.0</div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Create Content at <span>Lightning Speed</span></h1>
+            <p>The ultimate AI-powered workspace for creators, developers, and digital agencies to scale productivity.</p>
+        </div>
+
+        <!-- Interactive Feature Simulation (Now Fully Activated) -->
+        <div class="interactive-box">
+            <div class="box-title">⚡ Live AI Prompt Engine</div>
+            <input type="text" id="userPrompt" class="real-input" placeholder="Type your prompt here (e.g. Write a startup slogan)...">
+            <button class="generate-btn" onclick="generateAIContent()">Generate Content 🚀</button>
+            <div id="aiOutput" class="output-box"></div>
+        </div>
+
+        <!-- Pricing Plans -->
+        <div class="section-title">💎 Popular Pricing Plans</div>
+        
+        <div class="pricing-card">
+            <div>
+                <div class="plan-name">Pro Creator Plan</div>
+                <div class="plan-desc">Unlimited AI generations & priority support</div>
+            </div>
+            <div class="plan-price">
+                <div class="amount">₹499<span style="font-size:9px; color:#9ca3af">/mo</span></div>
+            </div>
+        </div>
+
+        <div class="pricing-card">
+            <div>
+                <div class="plan-name">Agency Elite</div>
+                <div class="plan-desc">Custom API access & team collaboration</div>
+            </div>
+            <div class="plan-price">
+                <div class="amount">₹1,499<span style="font-size:9px; color:#9ca3af">/mo</span></div>
+            </div>
+        </div>
+
+        <!-- Main Action -->
+        <a href="https://wa.me/919243266485?text=Hi,%20I%20want%20to%20subscribe%20to%20Vortex%20AI%20Plan" class="cta-btn" target="_blank">Get Started Now 🚀</a>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2026 Vortex AI Labs. Crafted by Brajesh Shrivas.
+        </div>
+    </div>
+
+    <script>
+        function generateAIContent() {
+            const promptInput = document.getElementById('userPrompt').value.trim();
+            const outputBox = document.getElementById('aiOutput');
+
+            if(promptInput === "") {
+                outputBox.style.display = "block";
+                outputBox.style.color = "#f87171";
+                outputBox.innerHTML = "⚠️ Please type a prompt first!";
+                return;
+            }
+
+            outputBox.style.display = "block";
+            outputBox.style.color = "#34d399";
+            outputBox.innerHTML = "⏳ Generating AI response for: <i>'" + promptInput + "'</i>...";
+
+            setTimeout(() => {
+                outputBox.innerHTML = "✨ <b>AI Result:</b> Successfully generated high-impact content for your request. Ready to scale your business!";
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
