@@ -255,6 +255,73 @@
             color: #7dd3fc;
         }
 
+        /* Growth Hub Specific Card / Article Styling inside Portfolio */
+        .hub-article-card {
+            background: #131b2e;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .article-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .article-card-body {
+            padding: 16px;
+        }
+
+        .read-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--primary);
+            color: #0f1420;
+            padding: 10px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: opacity 0.2s;
+        }
+
+        .read-btn:hover {
+            opacity: 0.9;
+        }
+
+        .full-content {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            border-top: 1px dashed #334155;
+            background: #0b101a;
+            border-radius: 6px;
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .full-content strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .full-content ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .full-content li {
+            margin-bottom: 6px;
+        }
+
         .action-buttons {
             display: flex;
             flex-direction: column;
@@ -389,54 +456,78 @@
                 <a href="https://royal-bean-cafe.vercel.app" target="_blank" class="project-link">Visit Live Website &rarr;</a>
             </div>
 
-            <!-- Project 3: Vortex AI Platform (Ab upar wale cards ki tarah bilkul simple aur clean) -->
+            <!-- Project 3: Vortex AI Platform -->
             <div class="custom-card project-card reveal-on-scroll">
                 <h3>🔮 Vortex AI Platform</h3>
                 <p>A modern SaaS landing page featuring AI tools, a live interactive prompt engine, and modern pricing tiers.</p>
                 <a href="vortex.html" target="_blank" class="project-link">Visit Live Website &rarr;</a>
             </div>
-        </section>
 
-        <section class="connect-section">
-            <h2 class="reveal-on-scroll">🤝 Let's Connect</h2>
+            <!-- Project 4: Student & Youth Growth Hub (10 Articles Integrated inside Portfolio) -->
+            <div class="custom-card project-card reveal-on-scroll">
+                <h3>🚀 Student & Youth Growth Hub</h3>
+                <p>A comprehensive digital hub featuring 10 essential articles on health, fitness, study focus, time management, and personal growth with interactive reading sections.</p>
+                
+                <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px;">
+                    
+                    <!-- Article 1 -->
+                    <div class="hub-article-card">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&auto=format&fit=crop&q=60" alt="Weight Gain" class="article-img">
+                        <div class="article-card-body">
+                            <h4 style="color:#fff; font-size:15px; margin-bottom:6px;">1. 1 Mahine Mein Weight Gain Kaise Karein?</h4>
+                            <p style="font-size:12px; margin-bottom:10px;"><strong>Kya milega:</strong> Healthy calorie surplus diet, protein sources aur proper sleep routine.</p>
+                            <button class="read-btn" onclick="toggleContent(this)">Read Full Article &darr;</button>
+                            <div class="full-content">
+                                <strong>Poori Jankari:</strong>
+                                <ul>
+                                    <li>Rozana apni body maintenance calories se 300-500 calories zyada khayein (Calorie Surplus).</li>
+                                    <li>Protein ke srot jaise paneer, daal, eggs, aur soya chunks ko daily diet me shamil karein.</li>
+                                    <li>Hafte me 3 se 4 baar strength training ya home workout zaroor karein taaki muscles banein.</li>
+                                    <li>Rozana kam se kam 7-8 ghante ki gahri neend lein taaki muscles proper recover ho sakein.</li>
+                                    <li>Doodh, kela, peanut butter aur dry fruits ka shake banakar roz piyein weight gain ke liye.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="custom-card reveal-on-scroll">
-                <p>💡 Aisi hi stunning aur professional website banvane ke liye mujhse contact karein - budget-friendly price mein behtareen design ke sath!</p>
-            </div>
+                    <!-- Article 2 -->
+                    <div class="hub-article-card">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&auto=format&fit=crop&q=60" alt="Fitness" class="article-img">
+                        <div class="article-card-body">
+                            <h4 style="color:#fff; font-size:15px; margin-bottom:6px;">2. Ghar Ke Samaan Se Body Fitness Banayein</h4>
+                            <p style="font-size:12px; margin-bottom:10px;"><strong>Kya milega:</strong> Push-ups, squats, core workouts aur stamina badhane ke tareeke.</p>
+                            <button class="read-btn" onclick="toggleContent(this)">Read Full Article &darr;</button>
+                            <div class="full-content">
+                                <strong>Poori Jankari:</strong>
+                                <ul>
+                                    <li>Bina gym gaye ghar par alag-alag variations ke sath push-ups lagayein chest ke liye.</li>
+                                    <li>Lower body aur legs ko strong banane ke liye daily 50 se 100 bodyweight squats karein.</li>
+                                    <li>Stamina aur lung capacity badhane ke liye rozana 10-15 minute skipping karein.</li>
+                                    <li>Core aur abs ko strong rakhne ke liye plank exercise ko apne daily routine me jodein.</li>
+                                    <li>Exercise karne se pehle body ko warm-up zaroor karein taaki injuries se bacha ja sake.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="action-buttons reveal-on-scroll">
-                <!-- WhatsApp Link Activated -->
-                <a href="https://wa.me/919243266485" target="_blank" class="cta-btn whatsapp-btn">
-                    💬 Chat on WhatsApp
-                </a>
-                <!-- Instagram Profile Link Activated -->
-                <a href="https://instagram.com/mr_aadi_singh_.002" target="_blank" class="cta-btn instagram-btn">
-                    📸 Instagram Profile
-                </a>
-            </div>
-        </section>
+                    <!-- Article 3 -->
+                    <div class="hub-article-card">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&auto=format&fit=crop&q=60" alt="Diet" class="article-img">
+                        <div class="article-card-body">
+                            <h4 style="color:#fff; font-size:15px; margin-bottom:6px;">3. Daily Water Intake aur Healthy Diet ke Fayde</h4>
+                            <p style="font-size:12px; margin-bottom:10px;"><strong>Kya milega:</strong> Paani peene ke sahi niyam, fresh fruits ke fayde aur skin glow.</p>
+                            <button class="read-btn" onclick="toggleContent(this)">Read Full Article &darr;</button>
+                            <div class="full-content">
+                                <strong>Poori Jankari:</strong>
+                                <ul>
+                                    <li>Rozana kam se kam 3 se 4 litre paani piyein taaki toxins body se bahar nikal sakein.</li>
+                                    <li>Meals me green vegetables, seasonal fruits aur dry fruits ko zaroor jagah dein.</li>
+                                    <li>Junk food, cold drinks aur packaged items se poori tarah doori banayein.</li>
+                                    <li>Sahi diet rakhne se skin par natural glow aata hai aur energy level high rehta hai.</li>
+                                    <li>Subah khali pet ek glass lukewarm water peene se digestion system strong hota hai.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-    </main>
-
-    <script>
-        // Scroll reveal animation observer
-        document.addEventListener("DOMContentLoaded", function () {
-            const revealElements = document.querySelectorAll('.reveal-on-scroll');
-
-            const scrollObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
-                });
-            }, {
-                threshold: 0.12
-            });
-
-            revealElements.forEach(element => {
-                scrollObserver.observe(element);
-            });
-        });
-    </script>
-</body>
-</html>
+                    <!-- Article 4 -->
